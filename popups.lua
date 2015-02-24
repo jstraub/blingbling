@@ -30,7 +30,7 @@ local function show_process_info(inc_proc_offset, title_color,user_color, root_c
   local save_proc_offset = proc_offset
 	hide_process_info()
 	proc_offset = save_proc_offset + inc_proc_offset
-  processstats = awful.util.pread('/bin/ps --sort -c,-s -eo fname,user,%cpu,%mem,pid,gid,ppid,tname,label | /usr/bin/head -n '..proc_offset)
+  processstats = awful.util.pread('/bin/ps --sort -c,-s -eo fname,user,%cpu,%mem,pid,gid,ppid,tname | /usr/bin/head -n '..proc_offset)
 	processstats = colorize(processstats, "COMMAND", title_color)
 	processstats = colorize(processstats, "USER", title_color)
 	processstats = colorize(processstats, "%%CPU", title_color)
@@ -39,7 +39,6 @@ local function show_process_info(inc_proc_offset, title_color,user_color, root_c
 	processstats = colorize(processstats, "GID", title_color)
 	processstats = colorize(processstats, "PPID", title_color)
 	processstats = colorize(processstats, "TTY", title_color)
-	processstats = colorize(processstats, "LABEL", title_color)
 	processstats = colorize(processstats, "root", root_color)
 	processstats = colorize(processstats, os.getenv("USER"), user_color)
   processpopup = naughty.notify({
